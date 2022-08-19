@@ -40,16 +40,15 @@ while True:
     print(x)
 
     s = col[col["T"] == x]
+    if s.empty:
+        speak("Sorry, not found. Do you have another query")
+    else:
+        loc1 = s["RACK/CABINET"].values
+        loc2 = s["ROW/BOX"].values
+        str1 = str(loc1)
+        str2 = str(loc2)
+        message = ("You can find this in cabinet", str1, "row", str2)
+        j = ''.join(message)
 
-    loc1 = s["RACK/CABINET"].values
-    loc2 = s["ROW/BOX"].values
-    str1 = str(loc1)
-    str2 = str(loc2)
-    message = ("You can find this in cabinet", str1, "row", str2)
-    j = ''.join(message)
-
-
-    print(j)
-
-
-    speak(j)
+        print(j)
+        speak(j)
